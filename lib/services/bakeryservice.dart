@@ -11,7 +11,7 @@ class BakeryService extends GetxController {
   void onInit() {
     super.onInit();
     getBake();
-    profile();
+    //profile();
   }
 
   getBake() async {

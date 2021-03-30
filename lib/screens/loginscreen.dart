@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:shop/screens/profilescreen.dart';
 import 'package:shop/services/bakeryservice.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -84,9 +85,11 @@ Widget fields() {
           Center(
             child: MaterialButton(
                 onPressed: () {
+                  bakeryService.profile();
+                  Get.to(ProfileScreen());
                   // bakeryService.loginUser(
                   //     _emailController, _passwordController);
-                  bakeryService.profile();
+
                   // print(
                   //     '${_emailController.text} and ${_passwordController.text}');
                 },
