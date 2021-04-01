@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shop/models/bakery.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop/models/cake.dart';
 
 class BakeryApi {
   static Future<List<Bakery>> getBakeries() async {
@@ -26,7 +27,7 @@ class BakeryApi {
     SharedPreferences shared = await SharedPreferences.getInstance();
     var data = res.body;
     var jsonData = jsonDecode(data);
-    var sR = await shared.setString('token', jsonData['token']);
+    await shared.setString('token', jsonData['token']);
     var sR1 = shared.getString('token');
     print('from SR $sR1');
 
@@ -48,6 +49,20 @@ class BakeryApi {
     print('from Decode ======= ${data.runtimeType}');
 
     return bakeryFromJson(data);
+  }
+
+  static Future<List<Cake>> getCakes() async {
+    SharedPreferences shared = await SharedPreferences.getInstance();
+    var sR1 = shared.getString('token');
+    var res = await http.get(Uri.http('localhost:3000', '/cakes'), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $sR1',
+    });
+    var data = res.body;
+
+    print(data);
+    return cakeFromJson(data);
   }
 }
 //goaassweets@gmail.com

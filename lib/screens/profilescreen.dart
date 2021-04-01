@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop/screens/cakescreen.dart';
 import 'package:shop/services/bakeryservice.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -51,13 +51,11 @@ class ProfileScreen extends StatelessWidget {
                 subtitle: Text(controller.bakes[index].email.toString()),
                 trailing: IconButton(
                   splashRadius: 25.0,
-                  icon: Icon(Icons.logout),
+                  icon: Icon(Icons.cake),
                   tooltip: 'Logout',
-                  onPressed: () async {
-                    SharedPreferences shared =
-                        await SharedPreferences.getInstance();
-                    shared.remove('token');
-                    //Get.defaultDialog();
+                  onPressed: () {
+                    bakeryService.getcakes();
+                    Get.to(() => CakeScreen());
                   },
                 ),
               );
@@ -68,5 +66,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-//"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImluZGlhbnN3ZWV0c0BnbWFpbC5jb20iLCJpYXQiOjE2MTcyNjYwNzN9.V0mlUlQfHgXIdy3gIy3eLKFk6lfYpJW1WmiBtNu3Lhc"
-//flutter.token

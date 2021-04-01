@@ -11,7 +11,6 @@ class BakeryService extends GetxController {
   void onInit() {
     super.onInit();
     getBake();
-    //profile();
   }
 
   getBake() async {
@@ -28,5 +27,10 @@ class BakeryService extends GetxController {
   profile() async {
     var bake = await BakeryApi.getProfile();
     bakes.assignAll(bake);
+  }
+
+  getcakes() async {
+    List<Cake> cake = await BakeryApi.getCakes();
+    cakes.assignAll(cake);
   }
 }
