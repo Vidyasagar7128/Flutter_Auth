@@ -20,14 +20,13 @@ class BakeryService extends GetxController {
   }
 
   loginUser(email, password) async {
-    List<Bakery> bake = await BakeryApi.login(email.text, password.text);
-    bakeries.assignAll(bake);
+    await BakeryApi.login(email.text, password.text);
+    // List<Bakery> bake =
+    //bakeries.assignAll(bake);
   }
 
   profile() async {
     var bake = await BakeryApi.getProfile();
-
     bakes.assignAll(bake);
-    //print(bake);
   }
 }

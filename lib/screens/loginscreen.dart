@@ -85,13 +85,13 @@ Widget fields() {
           Center(
             child: MaterialButton(
                 onPressed: () {
-                  bakeryService.profile();
-                  Get.to(ProfileScreen());
-                  // bakeryService.loginUser(
-                  //     _emailController, _passwordController);
+                  bakeryService.loginUser(
+                      _emailController, _passwordController);
 
-                  // print(
-                  //     '${_emailController.text} and ${_passwordController.text}');
+                  print(
+                      '${_emailController.text} and ${_passwordController.text}');
+                  bakeryService.profile();
+                  Get.to(() => ProfileScreen());
                 },
                 child: Text('Create Account',
                     style: TextStyle(color: Colors.white)),
